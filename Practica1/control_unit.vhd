@@ -1,8 +1,8 @@
 --------------------------------------------------------------------------------
 -- Unidad de control principal del micro. Arq0 2018
 --
--- (INCLUIR AQUI LA INFORMACION SOBRE LOS AUTORES)
---
+-- Javier Delgado del Cerro
+-- Javier López Cano
 --------------------------------------------------------------------------------
 
 library ieee;
@@ -25,9 +25,9 @@ entity control_unit is
       ALUControl  : out  std_logic_vector (3 downto 0); -- Control de la ALU, evitamos ALUControl
       -- Seniales para el GPR
       RegWrite : out  std_logic; -- 1=Escribir registro
-      RegDst   : out  std_logic  -- 0=Reg. destino es rt, 1=rd
+      RegDst   : out  std_logic;  -- 0=Reg. destino es rt, 1=rd
       --Seniales para J:
-      Jump : out std_logic; -- 1=jump
+      Jump : out std_logic -- 1=jump
    );
 end control_unit;
 
@@ -66,26 +66,25 @@ MemWrite <= '1' when OpCode = OP_SW else '0';
 
 Branch <= '1' when OpCode = OP_BEQ else '0';
 
+--TODO A lo mejor hay que quitar SW y LW, en la tabla de EC no están marcadas pero en la practica si
 ALUSrc <= '1' when (OpCode = OP_LUI) or (OpCode = OP_ADDI) or (OpCode = OP_SLTI) or (OpCode = OP_LW) or (OpCode = OP_SW) else '0'; 
 ALUControl <= ALU_OR when (OpCode = OP_RTYPE) and (Funct = "100101") else --OR
-              ALU_XOR when (OpCode = OP_RTYPE) and (Funct = "10110") else --XOR
+              ALU_XOR when (OpCode = OP_RTYPE) and (Funct = "100110") else --XOR
               ALU_AND when (OpCode = OP_RTYPE) and (Funct = "100100") else --AND
               ALU_SUB when (OpCode = OP_RTYPE) and (Funct = "100010") else --SUB
               ALU_ADD when (OpCode = OP_RTYPE) and (Funct = "100000") else --ADD
-              ALU_ADD when (OpCode = LW) or (OpCode = OP_SW) else --SW y SW
+              ALU_ADD when (OpCode = OP_LW) or (OpCode = OP_SW) else --SW y SW
               ALU_SUB when (OpCode = OP_BEQ) else --BEQ
               ALU_ADD when (OpCode = OP_ADDI) else --ADDI
               ALU_SLT when (OpCode = OP_SLTI) else --SLTI
               "----";
 
+-- TODO ¿LUI? ¿Que necesita hacer en la ALU?
+
 
 RegDst <= '1' when OpCode = OP_RTYPE else '0';
-RegWrite <= '1' when (OpCode = OP_RTYPE) or (OpCode = OP_LW) or (OpCode = OP_LUI) or (OpCode = OP_SLTI) else '0';
+RegWrite <= '1' when (OpCode = OP_RTYPE) or (OpCode = OP_LW) or (OpCode = OP_LUI) or (OpCode = OP_SLTI) or (OpCode = OP_ADDI) else '0';
 
 Jump <= '1' when OpCode = OP_JUMP else '0';
-
-
-
-
 
 end architecture;
