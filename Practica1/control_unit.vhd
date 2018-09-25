@@ -77,9 +77,8 @@ ALUControl <= ALU_OR when (OpCode = OP_RTYPE) and (Funct = "100101") else --OR
               ALU_SUB when (OpCode = OP_BEQ) else --BEQ
               ALU_ADD when (OpCode = OP_ADDI) else --ADDI
               ALU_SLT when (OpCode = OP_SLTI) else --SLTI
+              ALU_S16 when (OpCode = OP_LUI) else --LUI
               "----";
-
--- TODO ¿LUI? ¿Que necesita hacer en la ALU?
 
 
 RegDst <= '1' when OpCode = OP_RTYPE else '0';
