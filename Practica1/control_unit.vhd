@@ -63,7 +63,9 @@ architecture rtl of control_unit is
 begin
 
 MemToReg <= '1' when OpCode = OP_LW else '0';
+MemRead <= '1' when OpCode = OP_LW else '0';
 MemWrite <= '1' when OpCode = OP_SW else '0';
+
 
 Branch <= '1' when OpCode = OP_BEQ else '0';
 
