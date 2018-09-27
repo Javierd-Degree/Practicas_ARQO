@@ -9,10 +9,10 @@ if [file exists work] {
 vlib work
 
 # Compilar RTL:
-vcom -work work -2002 -explicit -check_synthesis reg_bank.vhd
-vcom -work work -2002 -explicit -check_synthesis alu.vhd
-vcom -work work -2002 -explicit -check_synthesis control_unit.vhd
-vcom -work work -2002 -explicit -check_synthesis processor.vhd
+vcom -work work -2002 -explicit -check_synthesis ../rtl/reg_bank.vhd
+vcom -work work -2002 -explicit -check_synthesis ../rtl/alu.vhd
+vcom -work work -2002 -explicit -check_synthesis ../rtl/control_unit.vhd
+vcom -work work -2002 -explicit -check_synthesis ../rtl/processor.vhd
 
 # Compilar testbench:
 vcom -work work -2002 -explicit memory.vhd
