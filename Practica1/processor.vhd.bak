@@ -158,7 +158,7 @@ NextAddr <= Addr + 4;
 PCJump(31 downto 28) <= NextAddr(31 downto 28);
 PCJump(27 downto 0) <= IDataIn(25 downto 0) & "00";
 
-PCBranchAux <= OpBExtSigno(29 downto 0) & "00";
+PCBranchAux <= MPDExtSigno(29 downto 0) & "00";
 PCBranch <= PCBranchAux + NextAddr;
 
 D <= PCJump when Jump = '1' else

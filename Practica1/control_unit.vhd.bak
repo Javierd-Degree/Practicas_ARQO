@@ -89,6 +89,6 @@ ALUControl <= ALU_OR when (OpCode = OP_RTYPE) and (Funct = "100101") else --OR
 RegDst <= '1' when OpCode = OP_RTYPE else '0';
 RegWrite <= '1' when (OpCode = OP_RTYPE) or (OpCode = OP_LW) or (OpCode = OP_LUI) or (OpCode = OP_SLTI) or (OpCode = OP_ADDI) else '0';
 
-Jump <= '1' when OpCode = OP_J else '0';
+Jump <= '1' when OpCode = OP_JUMP else '0';
 
 end architecture;
