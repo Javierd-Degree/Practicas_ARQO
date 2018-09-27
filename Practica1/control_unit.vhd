@@ -61,6 +61,7 @@ architecture rtl of control_unit is
    constant ALU_ADD  : t_aluControl := "0000";
    constant ALU_SLT  : t_aluControl := "1010";
    constant ALU_S16  : t_aluControl := "1101";
+   constant ALU_NOP  : t_aluControl := "0000";
 
 begin
 
@@ -78,6 +79,8 @@ ALUControl <= ALU_OR when (OpCode = OP_RTYPE) and (Funct = "100101") else --OR
               ALU_AND when (OpCode = OP_RTYPE) and (Funct = "100100") else --AND
               ALU_SUB when (OpCode = OP_RTYPE) and (Funct = "100010") else --SUB
               ALU_ADD when (OpCode = OP_RTYPE) and (Funct = "100000") else --ADD
+			  ALU_SLT when (OpCode = OP_RTYPE) and (Funct = "101010") else --SLT
+			  ALU_NOP when (OpCode = OP_RTYPE) and (Funct = "000000") else --NOP
               ALU_ADD when (OpCode = OP_LW) or (OpCode = OP_SW) else --SW y SW
               ALU_SUB when (OpCode = OP_BEQ) else --BEQ
               ALU_ADD when (OpCode = OP_ADDI) else --ADDI
@@ -86,8 +89,8 @@ ALUControl <= ALU_OR when (OpCode = OP_RTYPE) and (Funct = "100101") else --OR
               "----";
 
 
-RegDst <= '1' when OpCode = OP_RTYPE else '0';
-RegWrite <= '1' when (OpCode = OP_RTYPE) or (OpCode = OP_LW) or (OpCode = OP_LUI) or (OpCode = OP_SLTI) or (OpCode = OP_ADDI) else '0';
+RegDst <= '1' when (OpCode = OP_RTYPE) and (Funct /= "000000") else '0';
+RegWrite <= '1' when ((OpCode = OP_RTYPE) and (Funct /= "000000")) or (OpCode = OP_LW) or (OpCode = OP_LUI) or (OpCode = OP_SLTI) or (OpCode = OP_ADDI) else '0';
 
 Jump <= '1' when OpCode = OP_J else '0';
 
