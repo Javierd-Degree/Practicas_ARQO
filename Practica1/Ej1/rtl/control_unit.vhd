@@ -33,8 +33,6 @@ entity control_unit is
 end control_unit;
 
 architecture rtl of control_unit is
-  
-  --TODO: PROBAR QUE NOP FUNCIONA BIEN.
 
    -- Tipo para los codigos de operacion:
    subtype t_opCode is std_logic_vector (5 downto 0);
@@ -72,7 +70,6 @@ MemWrite <= '1' when OpCode = OP_SW else '0';
 
 Branch <= '1' when OpCode = OP_BEQ else '0';
 
---TODO A lo mejor hay que quitar SW y LW, en la tabla de EC no están marcadas pero en la practica si
 ALUSrc <= '1' when (OpCode = OP_LUI) or (OpCode = OP_ADDI) or (OpCode = OP_SLTI) or (OpCode = OP_LW) or (OpCode = OP_SW) else '0'; 
 ALUControl <= ALU_OR when (OpCode = OP_RTYPE) and (Funct = "100101") else --OR
               ALU_XOR when (OpCode = OP_RTYPE) and (Funct = "100110") else --XOR

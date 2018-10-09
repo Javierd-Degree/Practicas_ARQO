@@ -33,35 +33,33 @@ entity control_unit is
 end control_unit;
 
 architecture rtl of control_unit is
-  
-  --TODO: PROBAR QUE NOP FUNCIONA BIEN.
 
-   -- Tipo para los codigos de operacion:
-   subtype t_opCode is std_logic_vector (5 downto 0);
+    -- Tipo para los codigos de operacion:
+    subtype t_opCode is std_logic_vector (5 downto 0);
 
-   -- Codigos de operacion para las diferentes instrucciones:
-   constant OP_RTYPE  : t_opCode := "000000";
-   constant OP_BEQ    : t_opCode := "000100";
-   constant OP_SW     : t_opCode := "101011";
-   constant OP_LW     : t_opCode := "100011";
-   constant OP_LUI    : t_opCode := "001111";
-   constant OP_ADDI   : t_opCode := "001000";
-   constant OP_SLTI   : t_opCode := "001010";
-   constant OP_J      : t_opCode := "000010";
+    -- Codigos de operacion para las diferentes instrucciones:
+    constant OP_RTYPE  : t_opCode := "000000";
+    constant OP_BEQ    : t_opCode := "000100";
+    constant OP_SW     : t_opCode := "101011";
+    constant OP_LW     : t_opCode := "100011";
+    constant OP_LUI    : t_opCode := "001111";
+    constant OP_ADDI   : t_opCode := "001000";
+    constant OP_SLTI   : t_opCode := "001010";
+    constant OP_J      : t_opCode := "000010";
    
-   -- Tipo para el control de la ALU:
-   subtype t_aluControl is std_logic_vector (3 downto 0);
-   
-   -- Codigos de control de la ALU:
-   constant ALU_OR   : t_aluControl := "0111";   
-   constant ALU_NOT  : t_aluControl := "0101";
-   constant ALU_XOR  : t_aluControl := "0110";
-   constant ALU_AND  : t_aluControl := "0100";
-   constant ALU_SUB  : t_aluControl := "0001";
-   constant ALU_ADD  : t_aluControl := "0000";
-   constant ALU_SLT  : t_aluControl := "1010";
-   constant ALU_S16  : t_aluControl := "1101";
-   constant ALU_NOP  : t_aluControl := "0000";
+    -- Tipo para el control de la ALU:
+    subtype t_aluControl is std_logic_vector (3 downto 0);
+    
+    -- Codigos de control de la ALU:
+    constant ALU_OR   : t_aluControl := "0111";   
+    constant ALU_NOT  : t_aluControl := "0101";
+    constant ALU_XOR  : t_aluControl := "0110";
+    constant ALU_AND  : t_aluControl := "0100";
+    constant ALU_SUB  : t_aluControl := "0001";
+    constant ALU_ADD  : t_aluControl := "0000";
+    constant ALU_SLT  : t_aluControl := "1010";
+    constant ALU_S16  : t_aluControl := "1101";
+    constant ALU_NOP  : t_aluControl := "0000";
 
 begin
 
@@ -72,7 +70,6 @@ MemWrite <= '1' when OpCode = OP_SW else '0';
 
 Branch <= '1' when OpCode = OP_BEQ else '0';
 
---TODO A lo mejor hay que quitar SW y LW, en la tabla de EC no están marcadas pero en la practica si
 ALUSrc <= '1' when (OpCode = OP_LUI) or (OpCode = OP_ADDI) or (OpCode = OP_SLTI) or (OpCode = OP_LW) or (OpCode = OP_SW) else '0'; 
 ALUControl <= ALU_OR when (OpCode = OP_RTYPE) and (Funct = "100101") else --OR
               ALU_XOR when (OpCode = OP_RTYPE) and (Funct = "100110") else --XOR

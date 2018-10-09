@@ -6,6 +6,10 @@
 -- ALU simple.
 -- - Soporta las operaciones: +, -, and, or, xor, not, slt, opb<<16
 -- - Soporta el flag Zero
+--
+-- Grupo 1311
+-- Javier Delgado del Cerro
+-- Javier López Cano
 --------------------------------------------------------------------------------
 
 library ieee;

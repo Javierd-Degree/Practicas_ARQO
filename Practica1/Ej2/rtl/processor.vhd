@@ -240,9 +240,9 @@ A31ID <= IDataInID(20 downto 16);
 A32ID <= IDataInID(15 downto 11);
 A3EX <= A32EX when RegDstEX = '1' else A31EX;
 
-A3 <= A3WB; --TODO CAMBIAR A REGISTRO WB
+A3 <= A3WB; 
 We3 <= RegWriteWB;
-Wd3 <= ResultWB when MemToRegWB = '0' else DDataInWB; --TODO ACTUALIZAR CON Wd3WB
+Wd3 <= ResultWB when MemToRegWB = '0' else DDataInWB;
 
 -- Extensor Signo para datos inmediatos en la ALU
 OpBExtSigno(31 downto 16) <= (others =>  IDataInID(15));

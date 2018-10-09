@@ -4,6 +4,10 @@
 -- Laboratorio de Arq0 2018
 --
 -- Banco completo de registros del microprocesador MIPS
+--
+-- Grupo 1311
+-- Javier Delgado del Cerro
+-- Javier López Cano
 ----------------------------------------------------------------------
 
 
