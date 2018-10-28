@@ -137,7 +137,11 @@ begin
       IDataInID <= (others => '0');
    elsif rising_edge(Clk) and (IDWrite = '1') then
       NextAddrID <= NextAddr;
-      IDataInID <= IDataIn;
+      if PCSrcMEM = '1' then
+        IDataInID <= (others => '0');
+      else
+        IDataInID <= IDataIn;
+      end if;
    end if;
 end process;
 
@@ -162,7 +166,7 @@ begin
 	  RegDstEX <= '0';
 
    elsif rising_edge(Clk) then
-      A31EX <= A31ID;
+     A31EX <= A31ID;
 	  A32EX <= A32ID;
 	  A1EX <= A1;
 	  A2EX <= A2;
@@ -171,7 +175,7 @@ begin
 	  NextAddrEX <= NextAddrID;
 	  OpBExtSignoEX <= OpBExtSigno;
 	  
-	  if Hazard = '1' then
+	  if Hazard = '1' or PCSrcMEM = '1' then
 		  ALUSrcEX <= '0';
 		  ALUControlEX <= (others => '0');
 		  BranchEX <= '0';
@@ -208,14 +212,23 @@ begin
       A3MEM <= (others => '0');
    elsif rising_edge(Clk) then
       PCBranchMEM <= PCBranchEX;
-      PCSrcMEM <= PCSrcEX;
       DDataOutMEM <= Rd2EX;
       ResultMEM <= Result;
-      MemWriteMEM <= MemWriteEX;
-      MemReadMEM <= MemReadEX;
-      MemToRegMEM <= MemToRegEX;
-      RegWriteMEM <= RegWriteEX;
       A3MEM <= A3EX;
+      if PCSrcMEM = '1' then
+        PCSrcMEM <= '0';
+        MemWriteMEM <= MemWriteEX;
+        MemReadMEM <= MemReadEX;
+        MemToRegMEM <= MemToRegEX;
+        RegWriteMEM <= RegWriteEX;
+      else
+        PCSrcMEM <= PCSrcEX;
+        MemWriteMEM <= MemWriteEX;
+        MemReadMEM <= MemReadEX;
+        MemToRegMEM <= MemToRegEX;
+        RegWriteMEM <= RegWriteEX;
+
+      end if;
    end if;
 end process;
 

@@ -40,10 +40,8 @@ main:
   add $t1, $t1, $t2 # en r9 un 7 = 5 + 2
   beq $t3, $t1, L2 #Salta
 
-  nop
-  nop
   #Relleno, no deberia ejecutarse
-  add $t3, $t1, $t2 # en r11 un 7 = 5 + 2
+  add $t3, $t1, $t1 # en r11 un 10 = 5 + 5
   sub $t3, $t3, $t3 # en r11 un 0
   
   #Probamos LW y add no efectivos
@@ -54,27 +52,28 @@ main:
   nop
   nop
   #En este caso sí debería ejecutarse, pues no ha saltado
-  add $t3, $t1, $t2 # en r11 un 6 = 5 + 2
+  add $t3, $t1, $t2 # en r11 un 6 = 4 + 2
   sub $t3, $t3, $t3 # en r11 un 0
 
-  #Probamos LW y add
+  #Probamos LW y add efectivos
   lw $t5, 16($zero) # $r13 = 16
   add $t1, $t5, $zero #r9 = 16
   beq $t5, $t1, L3 #Salta
 
-  nop
-  nop
   #Relleno, no deberia ejecutarse
   add $t3, $t1, $t2 # en r11 un 7 = 5 + 2
   sub $t3, $t3, $t3 # en r11 un 0
   
-  #Probamos add y LW 
+  #Probamos add y LW no efectivos
   L3: add $t1, $t1, $t1 # r9 = 32
+  lw $t5, 12($zero) # $r13 = 8
+  beq $t5, $t1, L4 #No salta
+
+  #Probamos add y LW efectivos
+  add $t1, $t1, $zero # r9 = 32
   lw $t5, 20($zero) # $r13 = 32
   beq $t5, $t1, L4 #Salta
 
-  nop
-  nop
   #Relleno, no deberia ejecutarse
   add $t3, $t1, $t2 # en r11 un 7 = 5 + 2
   sub $t3, $t3, $t3 # en r11 un 0
@@ -83,8 +82,6 @@ main:
   L4: lw $t6, 20($zero) # $r14 = 32
   lw $t5, 20($zero) # $r13 = 32
   beq $t5, $t6, L1 #Salta
-  nop
-  nop
   
   
   
