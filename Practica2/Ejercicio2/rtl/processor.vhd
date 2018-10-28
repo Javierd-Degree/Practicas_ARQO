@@ -39,7 +39,7 @@ signal ZFlag, We3, Branch, MemToReg, MemWrite, MemRead, ALUSrc, RegWrite, RegDst
 signal NextAddrID, IDataInID, NextAddrEX, OpBExtSignoEX, Rd2EX, Rd1EX, PCBranchEX, ResultMEM, PCBranchMEM, DDataOutMEM, DDataInWB, ResultWB : std_logic_vector (31 downto 0);
 signal A31ID, A32ID, A31EX, A32EX, A3EX, A3MEM, A3WB : std_logic_vector(4 downto 0);
 signal RegDstEX, ALUSrcEX, BranchEX, MemToRegEX, MemWriteEX, MemReadEX, RegWriteEX, PCSrcEX, PCSrcMEM, MemWriteMEM, MemReadMEM, MemToRegWB, MemToRegMEM, RegWriteMEM, RegWriteWB : std_logic;
-signal PCWrite, IDWrite, Hazard : std_logic;
+signal PCWrite, IDWrite, Hazard, HazardLW, HazardBranch, HazardBranchLW : std_logic;
 signal ALUControlEX : std_logic_vector (3 downto 0);
 
 signal ForwardA, ForwardB : std_logic_vector (1 downto 0);
@@ -296,8 +296,11 @@ ForwardB <= "10" when ((RegWriteMEM = '1') and (A3MEM /= "00000") and (A3MEM = A
 			"00";
 
 -- Unidad de deteccion de riesgos
-
- Hazard <= '1' when (MemReadEX = '1') and ((A2EX = A1) or (A2EX = A2)) else '0';
+ HazardLW <= '1' when (MemReadEX = '1') and ((A3EX = A1) or (A3EX = A2)) else '0';
+ HazardBranchLW <='1' when (branch = '1') and ( (MemReadEX = '1' and ((A3EX = A1) or (A3EX = A2))) or (MemReadMEM = '1' and ((A3MEM = A1) or (A3MEM = A2))) ) else '0';
+ HazardBranch <='1' when (branch = '1') and (RegWriteEX = '1' and ((A3EX = A1) or (A3EX = A2))) else '0';
+ 
+ Hazard <= HazardLW or HazardBranch or HazardBranchLW;
  PCWrite <= '0' when Hazard = '1' else '1';
  IDWrite <= '0' when Hazard = '1' else '1';
 			
