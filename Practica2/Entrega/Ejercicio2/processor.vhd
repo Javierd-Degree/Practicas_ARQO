@@ -219,10 +219,10 @@ begin
       A3MEM <= A3EX;
       if PCSrcMEM = '1' then
         PCSrcMEM <= '0';
-        MemWriteMEM <= MemWriteEX;
-        MemReadMEM <= MemReadEX;
-        MemToRegMEM <= MemToRegEX;
-        RegWriteMEM <= RegWriteEX;
+        MemWriteMEM <= '0';
+        MemReadMEM <= '0';
+        MemToRegMEM <= '0';
+        RegWriteMEM <= '0';
       else
         PCSrcMEM <= PCSrcEX;
         MemWriteMEM <= MemWriteEX;
