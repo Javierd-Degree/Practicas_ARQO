@@ -32,13 +32,10 @@ for((i = 0; i < Nveces; i++)); do
 		# tercera columna (el valor del tiempo). Dejar los valores en variables
 		# para poder imprimirlos en la misma línea del fichero de datos
 		slowTime=$(./slow $N | grep 'time' | awk '{print $3}')
-		echo "$slowTime"
 
 		if [ ${#slowResults[*]} -gt $j ]; then
-			echo "Añadido"
 			slowResults[$j]=$(awk "BEGIN {print ${slowResults[$j]}+$slowTime; exit}")
 		else
-			echo "Nuevo"
 			slowResults[$j]=$slowTime
 		fi
 
@@ -62,6 +59,7 @@ for((i = 0; i < Nveces; i++)); do
 	done
 done
 
+Nelementos=${#slowResults[*]}
 for ((i = 0 ; i < Nelementos ; i++)); do
 	N=$((Ninicio + i*Npaso))
 
