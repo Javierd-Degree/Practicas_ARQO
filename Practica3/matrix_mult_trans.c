@@ -25,18 +25,12 @@ int main( int argc, char *argv[])
 		return -1;
 	}
 
-
-	imprimirMatriz(m1, n, "M1");
-	imprimirMatriz(m2, n, "M2");
 	gettimeofday(&ini,NULL);
 
 	/* Main computation */
 	res = compute(m1, m2, mt, n);
 	/* End of computation */
 	gettimeofday(&fin,NULL);
-
-	imprimirMatriz(res, n, "Res");
-
 
 	printf("Execution time: %f\n", ((fin.tv_sec*1000000+fin.tv_usec)-(ini.tv_sec*1000000+ini.tv_usec))*1.0/1000000.0);
 	
@@ -63,12 +57,11 @@ tipo ** compute(tipo **m1, tipo **m2, tipo **mt, int n){
 			mt[i][j] += m2[j][i];
 		}
 	}
-	
-	// Multiplying matrix firstMatrix and secondMatrix and storing in array mult.
+
 	for(i = 0; i < n; ++i){
 		for(j = 0; j < n; ++j){
 			for(k=0; k<n; ++k){
-				res[i][j] += m1[i][k] * m2[j][k];
+				res[i][j] += m1[i][k] * mt[j][k];
 			}
 		}
 	}

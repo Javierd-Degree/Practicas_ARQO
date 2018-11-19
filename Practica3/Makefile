@@ -4,7 +4,7 @@ FLAGS = -g -Wall -D_GNU_SOURCE
 
 .PHONY: clean all
 
-all: fast slow ej3 ej3_2
+all: fast slow matrix_mult matrix_mult_trans
 
 fast: fast.c arqo3.c
 	gcc $(FLAGS) $(LIB_DIR) -o $@ $^ $(LIBS)
@@ -12,11 +12,11 @@ fast: fast.c arqo3.c
 slow: slow.c arqo3.c
 	gcc $(FLAGS) $(LIB_DIR) -o $@ $^ $(LIBS)
 
-ej3: Ejercicio3.c arqo3.c
+matrix_mult: matrix_mult.c arqo3.c
 	gcc $(FLAGS) $(LIB_DIR) -o $@ $^ $(LIBS)
 
-ej3_2: Ejercicio3_2.c arqo3.c
+matrix_mult_trans: matrix_mult_trans.c arqo3.c
 	gcc $(FLAGS) $(LIB_DIR) -o $@ $^ $(LIBS)
 
 clean:
-	rm -f *.o *~ fast slow ej3 ej3_2
+	rm -f *.o *~ fast slow matrix_mult matrix_mult_trans
