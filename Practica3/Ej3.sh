@@ -37,6 +37,7 @@ echo "Running matrix products..."
 
 	done
 
+# Borramos archivos innecesarios
 rm -f cgout_*
 
 echo "Generating time plot..."

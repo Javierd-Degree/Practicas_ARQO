@@ -54,6 +54,9 @@ echo "Running slow and fast..."
 
 	done
 
+# Borramos archivos innecesarios
+rm -f cgout_*
+
 echo "Generating plot..."
 # llamar a gnuplot para generar el gráfico y pasarle directamente por la entrada
 # estándar el script que está entre "<< END_GNUPLOT" y "END_GNUPLOT"
