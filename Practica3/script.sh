@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./slow_fast_time.sh
-./Ej3.sh
+    bash ./slow_fast_time.sh
+    bash ./Ej3.sh
 
-shutdown -h now
+    shutdown -h now
