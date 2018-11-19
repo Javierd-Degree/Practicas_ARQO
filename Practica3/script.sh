@@ -1,4 +1,6 @@
 #!/bin/bash
 
 ./slow_fast_time.sh
-./Ej2.sh
+./Ej3.sh
+
+shutdown -h now

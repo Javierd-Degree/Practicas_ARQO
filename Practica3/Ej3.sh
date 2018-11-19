@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Inicializar variables
-Npaso=5
-P=3
-Ninicio=$((25+25*$P))
-Nfinal=$((25+25*($P+1)))
+Npaso=16
+P=10
+Ninicio=$((256+256*$P))
+Nfinal=$((256+256*($P+1)))
 file=mult.dat
 fPNG1=mult_cache.png
 fPNG2=mult_time.png
