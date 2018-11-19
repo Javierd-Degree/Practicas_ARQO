@@ -1,20 +1,6 @@
-cache multinivel de 3 niveles con separación entre instrucciones y datos en el nivel uno y con los niveles 2 y 3 unificados.
+Al analizar con "getconf -a | grep -i cache" en el terminal las caches de los ordenadores del laboratorio, vemos que estos tienen una cache multinivel de 3 niveles con separación entre instrucciones y datos en el nivel uno y con los niveles 2 y 3 unificados.
+La cache 1 es una cache de 8 vias, la 2 de 4 vias y la 3 de 12 vias y todas ellas tienen un tamaño de linea de 64 bits. Por tanto se trata de memorias set-associative, la primera de 8, la segunda de 4 y la tercera de 12 vias. Tambien podemos observar que las caches nivel 1 tanto de instrucciones como de datos tienen un tamaño de 32KB, la de nivel 2 un tamaño de 256KB y la de nivel 3 dispone de 6MB de capacidad.
 
-LEVEL1_ICACHE_SIZE                 32768
-LEVEL1_ICACHE_ASSOC                8
-LEVEL1_ICACHE_LINESIZE             64
-LEVEL1_DCACHE_SIZE                 32768
-LEVEL1_DCACHE_ASSOC                8
-LEVEL1_DCACHE_LINESIZE             64
-LEVEL2_CACHE_SIZE                  262144
-LEVEL2_CACHE_ASSOC                 4
-LEVEL2_CACHE_LINESIZE              64
-LEVEL3_CACHE_SIZE                  6291456
-LEVEL3_CACHE_ASSOC                 12
-LEVEL3_CACHE_LINESIZE              64
-LEVEL4_CACHE_SIZE                  0
-LEVEL4_CACHE_ASSOC                 0
-LEVEL4_CACHE_LINESIZE              0
 
-cache_alignment	: 64
-address sizes	: 39 bits physical, 48 bits virtual
+En el caso de el equipo personal, segun los datos que nos proporciona lstopo se trata de un equipo con 6 cores, cada uno de los cuales tiene 2 niveles de cache propios y un tercer nivel que es común a todos ellos, por tanto dispone de una cache multinivel con 3 niveles. Las caches de nivel 1 tienen separación entre datos e instrucciones, la de instrucciones dispone de 64KB mientras que la de datos tan solo tiene 32 KB, el nivel 2 no tiene separación entre instrucciones y datos y tiene 512KB para cada core. Por ultimo la caché de nivel 3 que es común a todos los cores tampoco tiene separación entre datos e instrucciones y tiene 16MB. 
+Si ademas de esto lo analizamos con "getconf -a | grep -i cache" podemos observar que las caches son de tipo set-associative, las de nivel 1 de instrucciones con 4 vias, las de datos con 8 vias, las de nivel 2 tambien con 8 vias, y la cache común de nivel 3 con 16 vias. Todas ellas con 64bits de tamaño de linea.
