@@ -13,7 +13,7 @@ fPNG1=slow_fast_read.png
 fPNG2=slow_fast_write.png
 
 # Borrar los ficheros DAT y PNG
-rm -f $fDAT1024 $fDAT2048 $fDAT4096 $fDAT8192 fPNG1 fPNG2
+rm -f $fDAT1024 $fDAT2048 $fDAT4096 $fDAT8192 $fPNG1 $fPNG2
 
 # Generar los ficheros DAT vacíos
 touch $fDAT $fDAT2048 $fDAT4096 $fDAT8192
@@ -53,6 +53,9 @@ echo "Running slow and fast..."
 		echo "$N	${slowResults8192}	${fastResults8192}" >> $fDAT8192
 
 	done
+
+# Borramos archivos innecesarios
+rm -f cgout_*
 
 echo "Generating plot..."
 # llamar a gnuplot para generar el gráfico y pasarle directamente por la entrada
