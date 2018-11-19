@@ -31,9 +31,9 @@ echo "Running slow and fast..."
 		valgrind --tool=cachegrind --cachegrind-out-file=cgout_slow4096.dat --I1=4096,1,64 --D1=4096,1,64 --LL=8388608,1,64 ./slow $N
 		valgrind --tool=cachegrind --cachegrind-out-file=cgout_slow8192.dat --I1=8192,1,64 --D1=8192,1,64 --LL=8388608,1,64 ./slow $N
 		valgrind --tool=cachegrind --cachegrind-out-file=cgout_fast1024.dat --I1=1024,1,64 --D1=1024,1,64 --LL=8388608,1,64 ./fast $N
-		valgrind --tool=cachegrind --cachegrind-out-file=cgout_fast2048.dat --I1=1024,1,64 --D1=1024,1,64 --LL=8388608,1,64 ./fast $N
-		valgrind --tool=cachegrind --cachegrind-out-file=cgout_fast4096.dat --I1=1024,1,64 --D1=1024,1,64 --LL=8388608,1,64 ./fast $N
-		valgrind --tool=cachegrind --cachegrind-out-file=cgout_fast8192.dat --I1=1024,1,64 --D1=1024,1,64 --LL=8388608,1,64 ./fast $N
+		valgrind --tool=cachegrind --cachegrind-out-file=cgout_fast2048.dat --I1=2048,1,64 --D1=2048,1,64 --LL=8388608,1,64 ./fast $N
+		valgrind --tool=cachegrind --cachegrind-out-file=cgout_fast4096.dat --I1=4096,1,64 --D1=4096,1,64 --LL=8388608,1,64 ./fast $N
+		valgrind --tool=cachegrind --cachegrind-out-file=cgout_fast8192.dat --I1=8192,1,64 --D1=8192,1,64 --LL=8388608,1,64 ./fast $N
 
 		# Mediante grep y awk cogemos de los ficheros en los que se han guardado los resultados del cachegrind,
 		# los datos que representan los fallos de cache de lectura y de escritura y con sed quitamos las comas.
