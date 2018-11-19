@@ -2,9 +2,9 @@
 
 # Inicializar variables
 Npaso=64
-P=1
-Ninicio=$((100+1024*$P))
-Nfinal=$((100+1024*($P+1)))
+P=10
+Ninicio=$((2000+1024*$P))
+Nfinal=$((2000+1024*($P+1)))
 fDAT1024=cache_1024.dat
 fDAT2048=cache_2048.dat
 fDAT4096=cache_4096.dat
