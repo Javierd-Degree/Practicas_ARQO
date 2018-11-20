@@ -47,16 +47,16 @@ echo "Running slow and fast..."
 		fast4096=$(valgrind --tool=cachegrind --cachegrind-out-file=cgout_fast4096.dat --I1=1024,1,64 --D1=1024,1,64 --LL=8388608,1,64 ./fast $N)
 		fast8192=$(valgrind --tool=cachegrind --cachegrind-out-file=cgout_fast8192.dat --I1=1024,1,64 --D1=1024,1,64 --LL=8388608,1,64 ./fast $N)
 
-    slowResults1024[$j]=$(cg_annotate cgout_slow1024.dat | head -n 30 | grep 'TOTALS' | awk '{print $5 $8}' | sed -e 's/,//g')
-		slowResults2048[$j]=$(cg_annotate cgout_slow2048.dat | head -n 30 | grep 'TOTALS' | awk '{print $5 $8}' | sed -e 's/,//g')
-		slowResults4096[$j]=$(cg_annotate cgout_slow4096.dat | head -n 30 | grep 'TOTALS' | awk '{print $5 $8}' | sed -e 's/,//g')
-		slowResults8192[$j]=$(cg_annotate cgout_slow8192.dat | head -n 30 | grep 'TOTALS' | awk '{print $5 $8}' | sed -e 's/,//g')
-		fastResults1024[$j]=$(cg_annotate cgout_fast1024.dat | head -n 30 | grep 'TOTALS' | awk '{print $5 $8}' | sed -e 's/,//g')
-		fastResults2048[$j]=$(cg_annotate cgout_fast2048.dat | head -n 30 | grep 'TOTALS' | awk '{print $5 $8}' | sed -e 's/,//g')
-		fastResults4096[$j]=$(cg_annotate cgout_fast4096.dat | head -n 30 | grep 'TOTALS' | awk '{print $5 $8}' | sed -e 's/,//g')
-		fastResults8192[$j]=$(cg_annotate cgout_fast8192.dat | head -n 30 | grep 'TOTALS' | awk '{print $5 $8}' | sed -e 's/,//g')
+    	slowResults1024[$j]=$(cg_annotate cgout_slow1024.dat | head -n 30 | grep 'TOTALS' | awk '{print $5	$8}' | sed -e 's/,//g')
+		slowResults2048[$j]=$(cg_annotate cgout_slow2048.dat | head -n 30 | grep 'TOTALS' | awk '{print $5	$8}' | sed -e 's/,//g')
+		slowResults4096[$j]=$(cg_annotate cgout_slow4096.dat | head -n 30 | grep 'TOTALS' | awk '{print $5	$8}' | sed -e 's/,//g')
+		slowResults8192[$j]=$(cg_annotate cgout_slow8192.dat | head -n 30 | grep 'TOTALS' | awk '{print $5	$8}' | sed -e 's/,//g')
+		fastResults1024[$j]=$(cg_annotate cgout_fast1024.dat | head -n 30 | grep 'TOTALS' | awk '{print $5	$8}' | sed -e 's/,//g')
+		fastResults2048[$j]=$(cg_annotate cgout_fast2048.dat | head -n 30 | grep 'TOTALS' | awk '{print $5	$8}' | sed -e 's/,//g')
+		fastResults4096[$j]=$(cg_annotate cgout_fast4096.dat | head -n 30 | grep 'TOTALS' | awk '{print $5	$8}' | sed -e 's/,//g')
+		fastResults8192[$j]=$(cg_annotate cgout_fast8192.dat | head -n 30 | grep 'TOTALS' | awk '{print $5	$8}' | sed -e 's/,//g')
 
-		echo "$N	${slowResults1024[$i]}	${fastResults1024[$i]}" >> $fDAT1024
+	  echo "$N	${slowResults1024[$i]}	${fastResults1024[$i]}" >> $fDAT1024
 	  echo "$N	${slowResults2048[$i]}	${fastResults2048[$i]}" >> $fDAT2048
 	  echo "$N	${slowResults4096[$i]}	${fastResults4096[$i]}" >> $fDAT4096
 	  echo "$N	${slowResults8192[$i]}	${fastResults8192[$i]}" >> $fDAT8192
