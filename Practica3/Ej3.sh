@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Inicializar variables
-Npaso=16
+Npaso=4
 P=10
 Ninicio=$((64+64*$P))
 Nfinal=$((64+64*($P+1)))
