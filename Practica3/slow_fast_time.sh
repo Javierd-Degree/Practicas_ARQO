@@ -59,7 +59,7 @@ for((i = 0; i < Nveces; i++)); do
 	done
 done
 
-for ((i = 0 ; i < Nveces ; i++)); do
+for ((i = 0 ; N <= Nfinal ; i++)); do
 	N=$((Ninicio + i*Npaso))
 
 	# Tenemos que dividir para hacer la media

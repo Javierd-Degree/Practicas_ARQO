@@ -10,7 +10,7 @@ fPNG1=mult_cache.png
 fPNG2=mult_time.png
 
 # Borrar el fichero DAT y el fichero PNG
-rm -f $file $fPNG1 $fPNG2
+rm -f $file fPNG1 fPNG2
 
 # Generar el fichero DAT vacío
 touch $file
@@ -50,7 +50,7 @@ set xlabel "N"
 set key right bottom
 set grid
 set term png
-set output "$fPNG1"
+set output "$fPNG2"
 plot "$file" using 1:2 with lines lw 2 title "Normal", \
      "$file" using 1:5 with lines lw 2 title "Transpose"
 replot
@@ -67,7 +67,7 @@ set xlabel "N"
 set key right bottom
 set grid
 set term png
-set output "$fPNG2"
+set output "$fPNG1"
 plot "$file" using 1:3 with lines lw 2 title "Normal - Read", \
      "$file" using 1:4 with lines lw 2 title "Normal - Write", \
      "$file" using 1:6 with lines lw 2 title "Transpose - Read", \
