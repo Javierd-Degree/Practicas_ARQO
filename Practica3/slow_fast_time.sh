@@ -59,8 +59,7 @@ for((i = 0; i < Nveces; i++)); do
 	done
 done
 
-Nelementos=${#slowResults[*]}
-for ((i = 0 ; i < Nelementos ; i++)); do
+for ((i = 0 ; N <= Nfinal ; i++)); do
 	N=$((Ninicio + i*Npaso))
 
 	# Tenemos que dividir para hacer la media
