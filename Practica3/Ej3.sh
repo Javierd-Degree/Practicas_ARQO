@@ -3,8 +3,8 @@
 # Inicializar variables
 Npaso=16
 P=10
-Ninicio=$((256+256*$P))
-Nfinal=$((256+256*($P+1)))
+Ninicio=$((64+64*$P))
+Nfinal=$((64+64*($P+1)))
 file=mult.dat
 fPNG1=mult_cache.png
 fPNG2=mult_time.png
