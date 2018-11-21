@@ -12,7 +12,7 @@ slowResults=()
 fastResults=()
 
 # Borrar el fichero DAT y el fichero PNG
-rm -f $fDAT fPNG
+rm -f $fDAT $fPNG
 
 # Generar el fichero DAT vacío
 touch $fDAT
@@ -59,7 +59,8 @@ for((i = 0; i < Nveces; i++)); do
 	done
 done
 
-for ((i = 0 ; N <= Nfinal ; i++)); do
+Nelementos=${#slowResults[*]}
+for ((i = 0 ; i < Nelementos ; i++)); do
 	N=$((Ninicio + i*Npaso))
 
 	# Tenemos que dividir para hacer la media

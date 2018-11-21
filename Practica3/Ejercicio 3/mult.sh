@@ -10,7 +10,7 @@ fPNG1=mult_cache.png
 fPNG2=mult_time.png
 
 # Borrar el fichero DAT y el fichero PNG
-rm -f $file fPNG1 fPNG2
+rm -f $file $fPNG1 $fPNG2
 
 # Generar el fichero DAT vacío
 touch $file
