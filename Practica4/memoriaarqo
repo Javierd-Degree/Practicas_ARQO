@@ -1,0 +1,27 @@
+0
+En los equipos de laboratorio se dispone de un solo procesador con 4 nucleos con una frecuencia máxima de 3,4GHz y sin hyperthreading, puesto que hay el mismo número de threads (siblings) que de cores físicos.
+
+1.1
+sí, se pueden lanzar más threads que cores tenga un sistema. Pero esto no siempre tiene sentido pues no todos los procesadores soportan multithreading y por tanto, en los casos en los que no se soporte esto, no habría un aumento de rendimiento l lanzar más threads que cores, sin embargo si un sistema si soporta esta tcnología sí que tendría sentido lanzar hasta 2 veces más threads que cores.
+
+1.2
+Como los ordenadores del laboratorio disponen de 4 cores sin hyperthreading, solo tendiría sentido usar hasta 4 threads (tantos como cores), en el caso del cluster tendría sentido ejecutar hasta 128 threads pues este dispone de 16 procesadores cada uno de los cuales tiene 8 cores, lo que suma un total de 128 cores que, ya que no sosportan hyperthreading solo tiene sentido que ejcuten un hilo cada uno, lo que supone que más de 128 threads a la vz no tienen sentido.
+En nuestro ordenador personal tendría sentido ejecutar hasta 12 threads a la vez pues dispone de un único procesador con 6 cores, pero estos sí que disponen de hyperthreading pudiendo ejecutar de forma eficinte hasta 2 hilos cada core, lo que hace que tenga sentido ejecutar hasta 12 threads a la vez.
+
+1.3
+Cuano declaramos una variable privada openMP crea una variable independiente con el mismo nombre para cada thread. Si uno de los threads modifica su variable, la variable del mismo nombre del resto de threads no se modifica pues son variables independientes.
+
+1.4
+El valor de las variables privadas se inicializa a 0.
+
+1.5
+Cuando finaliza la región paralela, la variable mantiene el valor que tenía antes de la región paralela.
+
+1.6
+En el caso de las variables públicas, estas son compartidas por todos los threads, y los cambios que realice en ella un thread se ven reflejados en el resto.
+Al finalizar la región paralela, esta variable mantiene el valor que tenía al final de la región paralela (tras ser modificada por el último thread).
+
+2.1/2.2
+El resultado es correcto en caso pescalar_serie pues no emplea threads por lo que no puede habr problemas de sincronización, y tambien es correcto en el caso pescalar_par2 pues al incluir en la declaración de la región de openMP el atributo "reduction(+:sum)" openMP crea una copia interna dentro de cada thread y al acabar la región paralela suma estas copias internas evitando así problemas de sincronización. Esto no se realiza en el caso pescalar_par1 haciendo que surjan en este problemas de sincronización lo que provoca que en este caso el resultado sea erróneo. 
+
+
