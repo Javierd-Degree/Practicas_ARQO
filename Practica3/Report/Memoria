@@ -2,6 +2,8 @@
 
 #### Javier Delgado del Cerro y Javier López Cano
 
+
+
 ## Ejercicio 0
 
 Al analizar con `getconf -a | grep -i cache` en la terminal las cachés de los ordenadores del laboratorio, vemos que estos tienen una cache multinivel de 3 niveles con separación entre instrucciones y datos en el nivel uno y con los niveles 2 y 3 unificados.
@@ -11,6 +13,8 @@ En el caso de el equipo personal, segun los datos que nos proporciona `lstopo` s
 Si ademas de esto lo analizamos con `getconf -a | grep -i cache` podemos observar que las caches son de tipo set-associative, las de nivel 1 de instrucciones con 4 vias, las de datos con 8 vias, las de nivel 2 tambien con 8 vias, y la cache común de nivel 3 con 16 vias. Todas ellas con 64bits de tamaño de linea.
 
 ![](./Ej0Imagen.jpg)
+
+
 
 ## Ejercicio 1
 
@@ -24,9 +28,14 @@ Se ve claramente como *slow* es considerablemente más lento que *fast*, y adem�
 En el ordenador usado para la práctica, aparece un pico en la ejecución de *slow* para N=20752, y este pico se puede aprecir también al ejecutar *slow* para dicha N de forma aislada. Lo hemos consultado con el profesor de teoria y parece que es normal, y que por características de la memoria caché, este tamaño causa un número muy grande de fallos, aumentando así el tiempo de ejecución.
 
 ## Ejercicio 2 
+
 Para llevar acabo este ejercicio, hemos creado el script `slow_fast_cache.sh`, que genera los ficheros y gráficas provenientes de ejecutar con `cachegrind` los programas *slow* y *fast*.
+
+
+
 ![](./slow_fast_read.png)
 ![](./slow_fast_write.png)
+
 Al observar estas gráficas y ficheros obtenidos y ver los fallos de caché producidos se puede ver que dependiendo del tamaño de la caché simulada, y de si se ejecuta el *slow* o el *fast* se producen variaciones en los fallos de caché producidos.
 En primer lugar, si nos fijamos en la gráfica de los fallos de lectura podemos ver de forma clara que, tanto para el programa *slow* como para el programa *fast* se cumple que, cuanto mayor es el tamaño de la caché simulada, menor es el número de fallos de lectura que se producen, esto se debe a que cuanto mayor sea el tamaño de la caché simulada, mayor cantidad de datos se pueden almacenar en ella y por tanto no será necesario realizar tantos accesos a otras memorias para encontrar los datos que el programa necesita pues la mayoría estarán en esta caché. Cabe destacar del mismo modo que, en general se observa que cuanto mayor es el N mayor es el número de fallos de lectura (si mantenemos el tamaño de la caché fijo), esto es razonable ya que el N representa el tamaño de las matrices que se calculan en el programa y, cuanto mayor sea este tamaño, mayor cantidad de datos necesitará el programa para ejecutarse, al igual tamaño de caché, cuantos mas datos sean necesarios, más veces habra que acceder a memorias distintas a la caché puesto que habrá mas datos fuera de esta. Sin embargo podemos observar un caso especial en el caso de las gráficas que representan a *slow* y *fast* con cachés de tamaño 8192 bytes, en estos casos se puede observar que se poducen numerosos picos a lo largo de la gráfica, esto puede deberse a que, con una caché tan grande, practicamente todos los datos que necesita el programa se encuentran en la caché y por tanto, en general, el número de fallos es muy próximo a cero, y, en las ejecuciones en las que se requiera acceder a la memoria principal para obtener un dato concreto, la gráfica genera un pico pues la diferencia será muy notable.
 Si en esta misma gráfica (manteniendo fijo el tamaño de la caché) comparamos la tendencia de los programas *slow* y *fast*, observamos que, por como están programados estos, en general *fast* tiene un menor número de fallos de lectura que *slow*.
@@ -43,8 +52,6 @@ Así, guardamos los datos en el fichero *mult.dat* con el formato pedido, y obte
 ![](./mult_cache.png)
 
 ![](./mult_time.png)
-
-
 
 Se puede ver perfectamente como tanto el tiempo como los fallos de caché aumentan al incrementar el tamaño de la N, sin embargo, ambos parámetros crecen con mayor velocidad en la multiplicación normal de matrices. Esto se debe a que, como hemos explicado en el ejercicio 1, las matrices se almacenan por filas dentro de la caché, y cómo la multiplicación normal de matrices accede a una matriz por filas y a la otra por columnas, mientras que la multiplicación traspuesa solo accede a las filas, esta última produce muchísimos menos fallos de caché (unas dieciseis veces menos).
 
