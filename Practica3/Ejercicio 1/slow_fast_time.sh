@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Inicializar variables
-Npaso=64
+Npaso=16
 Nveces=20
 P=10
-Ninicio=$((10000+1024*$P))
-Nfinal=$((10000+1024*($P+1)))
+Ninicio=$((256*$P))
+Nfinal=$((256*($P+1)))
 fDAT=slow_fast_time.dat
 fPNG=slow_fast_time.png
 slowResults=()

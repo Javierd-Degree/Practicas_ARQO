@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Inicializar variables
-Npaso=64
+Npaso=16
 P=10
-Ninicio=$((2000+1024*$P))
-Nfinal=$((2000+1024*($P+1)))
+Ninicio=$((256*$P))
+Nfinal=$((256*($P+1)))
 fDAT1024=cache_1024.dat
 fDAT2048=cache_2048.dat
 fDAT4096=cache_4096.dat
@@ -35,7 +35,7 @@ echo "Running slow and fast..."
 		valgrind --tool=cachegrind --cachegrind-out-file=cgout_fast4096.dat --I1=4096,1,64 --D1=4096,1,64 --LL=8388608,1,64 ./fast $N
 		valgrind --tool=cachegrind --cachegrind-out-file=cgout_fast8192.dat --I1=8192,1,64 --D1=8192,1,64 --LL=8388608,1,64 ./fast $N
 
-<<<<<<< HEAD
+
     	slowResults1024[$j]=$(cg_annotate cgout_slow1024.dat | head -n 30 | grep 'TOTALS' | awk '{print $5	$8}' | sed -e 's/,//g')
 		slowResults2048[$j]=$(cg_annotate cgout_slow2048.dat | head -n 30 | grep 'TOTALS' | awk '{print $5	$8}' | sed -e 's/,//g')
 		slowResults4096[$j]=$(cg_annotate cgout_slow4096.dat | head -n 30 | grep 'TOTALS' | awk '{print $5	$8}' | sed -e 's/,//g')
@@ -49,7 +49,7 @@ echo "Running slow and fast..."
 	  echo "$N	${slowResults2048[$i]}	${fastResults2048[$i]}" >> $fDAT2048
 	  echo "$N	${slowResults4096[$i]}	${fastResults4096[$i]}" >> $fDAT4096
 	  echo "$N	${slowResults8192[$i]}	${fastResults8192[$i]}" >> $fDAT8192
-=======
+
 		# Mediante grep y awk cogemos de los ficheros en los que se han guardado los resultados del cachegrind,
 		# los datos que representan los fallos de cache de lectura y de escritura y con sed quitamos las comas.
     	slowResults1024=$(cg_annotate cgout_slow1024.dat | head -n 30 | grep 'TOTALS' | awk '{print $5"\t"$8}' | sed -e 's/,//g')
@@ -66,7 +66,6 @@ echo "Running slow and fast..."
 		echo "$N	${slowResults2048}	${fastResults2048}" >> $fDAT2048
 		echo "$N	${slowResults4096}	${fastResults4096}" >> $fDAT4096
 		echo "$N	${slowResults8192}	${fastResults8192}" >> $fDAT8192
->>>>>>> 7e23480731c354145ef1ab46bdcfd763e25d34d8
 
 	done
 
