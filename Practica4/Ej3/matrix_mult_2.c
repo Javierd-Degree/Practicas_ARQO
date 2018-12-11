@@ -44,7 +44,7 @@ int main( int argc, char *argv[])
 }
 
 tipo ** compute(tipo **m1, tipo **m2, int n){
-	int i,j,k;
+	int i,j;
 
 	tipo **res = NULL;
 	res = generateEmptyMatrix(n);
@@ -55,6 +55,7 @@ tipo ** compute(tipo **m1, tipo **m2, int n){
 	for(i = 0; i < n; ++i){
 		#pragma omp parallel for
 		for(j = 0; j < n; ++j){
+			int k;
 			for(k=0; k<n; ++k){
 				res[i][j] += m1[i][k] * m2[k][j];
 			}
