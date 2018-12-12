@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Inicializar variables
-Npaso=3640000
+Npaso=36400000
 Nveces=5
 Ninicio=16000000
 Nfinal=380000000
