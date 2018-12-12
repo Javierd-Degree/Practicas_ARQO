@@ -5,6 +5,7 @@ Npaso=64
 P=10
 Ninicio=$((512+$P))
 Nfinal=$((1024+512+$P))
+numHilos=6
 
 fDAT0=timesSerie.dat
 fDAT1=timesPar.dat
@@ -20,7 +21,7 @@ parResults=()
 rm -f $fDAT0 $fDAT1 $fDAT2 $fPNG1 $fPNG2
 
 # Generar el fichero DAT vacío
-touch $fDAT0 $fDAT1 $fDAT2 
+touch $fDAT0 $fDAT1 $fDAT2
 
 echo "Running serie..."
 
@@ -35,14 +36,14 @@ for((N = Ninicio ; N <= Nfinal ; N += Npaso)); do
 done
 
 
-echo "Running paralelo bucle 2..."
+echo "Running paralelo bucle 1..."
 
 for((N = Ninicio ; N <= Nfinal ; N += Npaso)); do
 	j=$(((N - Ninicio)/Npaso))
 
 	echo "N: $N / $Nfinal..."
 
-	parTime=$(./matrix_mult_2 $N 6 | grep 'time' | awk '{print $3}')
+	parTime=$(./matrix_mult_1 $N $numHilos | grep 'time' | awk '{print $3}')
 
 	parResults[$j]=$parTime
 
@@ -62,7 +63,7 @@ done
 for ((i = 0 ; i < Nelementos ; i++)); do
 	N=$((Ninicio + i*Npaso))
 
-	for((j=0 ; j<=5 ; j++)); do
+	for((j=0 ; j<numHilos ; j++)); do
 
 		parResults[$i]=$(awk "BEGIN {print ${parResults[$i]}/${serieResults[$i]}; exit}")
 

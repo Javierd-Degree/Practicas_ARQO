@@ -34,8 +34,6 @@ int main( int argc, char *argv[])
 	gettimeofday(&fin,NULL);
 
 	printf("Execution time: %f\n", ((fin.tv_sec*1000000+fin.tv_usec)-(ini.tv_sec*1000000+ini.tv_usec))*1.0/1000000.0);
-	
-
 
 	free(m1);
 	free(m2);
@@ -44,18 +42,17 @@ int main( int argc, char *argv[])
 }
 
 tipo ** compute(tipo **m1, tipo **m2, int n){
-	int i,j;
+	int i,j,k;
 
 	tipo **res = NULL;
 	res = generateEmptyMatrix(n);
 	if(res == NULL){
 		return NULL;
 	}
-	
+
 	for(i = 0; i < n; ++i){
-		#pragma omp parallel for
+		#pragma omp parallel for private(k)
 		for(j = 0; j < n; ++j){
-			int k;
 			for(k=0; k<n; ++k){
 				res[i][j] += m1[i][k] * m2[k][j];
 			}
