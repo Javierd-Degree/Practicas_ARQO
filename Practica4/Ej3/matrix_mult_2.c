@@ -43,6 +43,7 @@ int main( int argc, char *argv[])
 
 tipo ** compute(tipo **m1, tipo **m2, int n){
 	int i,j,k;
+	double sum;
 
 	tipo **res = NULL;
 	res = generateEmptyMatrix(n);
@@ -51,11 +52,13 @@ tipo ** compute(tipo **m1, tipo **m2, int n){
 	}
 
 	for(i = 0; i < n; ++i){
-		#pragma omp parallel for private(k)
+		#pragma omp parallel for reduction(+: sum)private(k)
 		for(j = 0; j < n; ++j){
+			sum = 0;
 			for(k=0; k<n; ++k){
-				res[i][j] += m1[i][k] * m2[k][j];
+				sum = m1[i][k] * m2[k][j];
 			}
+			res[i][j] = sum;
 		}
 	}
 

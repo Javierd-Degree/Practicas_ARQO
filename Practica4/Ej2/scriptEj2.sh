@@ -48,17 +48,17 @@ echo "Running paralelo..."
 for((N = Ninicio ; N <= Nfinal ; N += Npaso)); do
 	k=$(((N - Ninicio)/Npaso))
 
-	for((j=1, l=0 ; j<=6 ; j++, l++)); do
+	for((j=1, l=0 ; j<=6 ; j++, l+=100)); do
 
-		for ((i=0; i < Nveces ; i ++)); do
+		for ((i=0; i < Nveces ; i++)); do
 			echo "N: $N / $Nfinal..."
 
 			parTime=$(./pescalar_par2 $N $j | grep 'Tiempo' | awk '{print $2}')
 
-			if [ ${#parResults[*]} -gt $(($k+6*$l)) ]; then
-				parResults[$k+6*$l]=$(awk "BEGIN {print ${parResults[$k+6*$l]}+$parTime; exit}")
+			if [ ${#parResults[*]} -gt $(($k+$l)) ]; then
+				parResults[$k+$l]=$(awk "BEGIN {print ${parResults[$k+$l]}+$parTime; exit}")
 			else
-				parResults[$k+6*$l]=$parTime
+				parResults[$k+$l]=$parTime
 			fi
 
 		done
@@ -74,11 +74,11 @@ for ((i = 0 ; i < Nelementos ; i++)); do
 	# Tenemos que dividir para hacer la media
 	serieResults[$i]=$(awk "BEGIN {print ${serieResults[$i]}/$Nveces; exit}")
 	parResults1[$i]=$(awk "BEGIN {print ${parResults[$i]}/$Nveces; exit}")
-	parResults2[$i]=$(awk "BEGIN {print ${parResults[$i+6]}/$Nveces; exit}")
-	parResults3[$i]=$(awk "BEGIN {print ${parResults[$i+12]}/$Nveces; exit}")
-	parResults4[$i]=$(awk "BEGIN {print ${parResults[$i+18]}/$Nveces; exit}")
-	parResults5[$i]=$(awk "BEGIN {print ${parResults[$i+24]}/$Nveces; exit}")
-	parResults6[$i]=$(awk "BEGIN {print ${parResults[$i+30]}/$Nveces; exit}")
+	parResults2[$i]=$(awk "BEGIN {print ${parResults[$i+100]}/$Nveces; exit}")
+	parResults3[$i]=$(awk "BEGIN {print ${parResults[$i+200]}/$Nveces; exit}")
+	parResults4[$i]=$(awk "BEGIN {print ${parResults[$i+300]}/$Nveces; exit}")
+	parResults5[$i]=$(awk "BEGIN {print ${parResults[$i+400]}/$Nveces; exit}")
+	parResults6[$i]=$(awk "BEGIN {print ${parResults[$i+500]}/$Nveces; exit}")
 	echo "$N	${serieResults[$i]}	${parResults1[$i]} ${parResults2[$i]} ${parResults3[$i]} ${parResults4[$i]} ${parResults5[$i]} ${parResults6[$i]}" >> $fDAT1
 done
 
