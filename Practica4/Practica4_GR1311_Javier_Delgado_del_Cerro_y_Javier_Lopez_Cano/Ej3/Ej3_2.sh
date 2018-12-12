@@ -36,14 +36,14 @@ for((N = Ninicio ; N <= Nfinal ; N += Npaso)); do
 done
 
 
-echo "Running paralelo bucle 1..."
+echo "Running paralelo bucle 3..."
 
 for((N = Ninicio ; N <= Nfinal ; N += Npaso)); do
 	j=$(((N - Ninicio)/Npaso))
 
 	echo "N: $N / $Nfinal..."
 
-	parTime=$(./matrix_mult_1 $N $numHilos | grep 'time' | awk '{print $3}')
+	parTime=$(./matrix_mult_3 $N $numHilos | grep 'time' | awk '{print $3}')
 
 	parResults[$j]=$parTime
 
