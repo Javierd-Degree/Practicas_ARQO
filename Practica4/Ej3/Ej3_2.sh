@@ -43,7 +43,7 @@ for((N = Ninicio ; N <= Nfinal ; N += Npaso)); do
 
 	echo "N: $N / $Nfinal..."
 
-	parTime=$(./matrix_mult_1 $N $numHilos | grep 'time' | awk '{print $3}')
+	parTime=$(./matrix_mult_3 $N $numHilos | grep 'time' | awk '{print $3}')
 
 	parResults[$j]=$parTime
 
