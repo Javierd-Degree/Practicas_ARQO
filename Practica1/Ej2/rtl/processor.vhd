@@ -38,7 +38,7 @@ signal ZFlag, We3, Branch, MemToReg, MemWrite, MemRead, ALUSrc, RegWrite, RegDst
 
 signal NextAddrID, IDataInID, NextAddrEX, OpBExtSignoEX, Rd2EX, Rd1EX, PCBranchEX, ResultMEM, PCBranchMEM, DDataOutMEM, DDataInWB, ResultWB : std_logic_vector (31 downto 0);
 signal A31ID, A32ID, A31EX, A32EX, A3EX, A3MEM, A3WB : std_logic_vector(4 downto 0);
-signal RegDstEX, ALUSrcEX, BranchEX, MemToRegEX, MemWriteEX, MemReadEX, RegWriteEX, ZFlagEX, PCSrcEX, PCSrcMEM, MemWriteMEM, MemReadMEM, MemToRegWB, MemToRegMEM, RegWriteMEM, RegWriteWB : std_logic;
+signal RegDstEX, ALUSrcEX, BranchEX, MemToRegEX, MemWriteEX, MemReadEX, RegWriteEX, PCSrcEX, PCSrcMEM, MemWriteMEM, MemReadMEM, MemToRegWB, MemToRegMEM, RegWriteMEM, RegWriteWB : std_logic;
 signal ALUControlEX : std_logic_vector (3 downto 0);
 
 
@@ -155,7 +155,6 @@ begin
 	  MemReadEX <= '0';
 	  RegWriteEX <='0';
 	  RegDstEX <= '0';
-	  ZFlagEX <= '0';
 
    elsif rising_edge(Clk) then
       A31EX <= A31ID;
@@ -172,7 +171,6 @@ begin
 	  MemReadEX <= MemRead;
 	  RegWriteEX <= RegWrite;
 	  RegDstEX <= RegDst;
-	  ZFlagEX <= ZFlag;
 
    end if;
 end process;
@@ -254,7 +252,7 @@ OpB <= Rd2EX when ALUSrcEX = '0' else OpBExtSignoEX;
 
 
 -- Posibles PC y sus multiplexores
-PCSrcEX <= ZFlagEX AND BranchEX;
+PCSrcEX <= ZFlag AND BranchEX;
 
 NextAddr <= Addr + 4;
 

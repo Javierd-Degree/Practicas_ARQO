@@ -7,9 +7,9 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 d/home/javierd/Desktop/Practica2/Ejercicio2/sim
+Z0 dC:/Users/javix/Documents/GitHub/PracticasARQO/Practica2/Ejercicio2/sim
 Ealu
-Z1 w1539112666
+Z1 w1540814160
 Z2 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
 Z3 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
 Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
@@ -19,27 +19,27 @@ Z6 8../rtl/alu.vhd
 Z7 F../rtl/alu.vhd
 l0
 L19
-VZf`AF=0WK50mdSZ2h<Kz`2
+VgzEOK=N97TP@XcfnW4^O=1
 !s100 3742k]4h=Hn08ca]QI9kd1
-Z8 OV;C;10.5b;63
+Z8 OP;C;10.4a;61
 32
-Z9 !s110 1540756920
+Z9 !s110 1540814332
 !i10b 1
-Z10 !s108 1540756920.000000
+Z10 !s108 1540814332.000000
 Z11 !s90 -reportprogress|300|-work|work|-2002|-explicit|-check_synthesis|../rtl/alu.vhd|
 Z12 !s107 ../rtl/alu.vhd|
 !i113 1
-Z13 o-work work -2002 -explicit -check_synthesis
-Z14 tExplicit 1 CvgOpt 0
+Z13 o-work work -2002 -explicit -check_synthesis -O0
+Z14 tExplicit 1
 Artl
 R2
 R3
 R4
 R5
-DEx4 work 3 alu 0 22 Zf`AF=0WK50mdSZ2h<Kz`2
+DEx4 work 3 alu 0 22 gzEOK=N97TP@XcfnW4^O=1
 l48
 L29
-Vi:0K9bEFk_11U?1l5I0hj3
+V5M7m3EDzSZ:P`k5>h?iF00
 !s100 ;>akf`c@QniU^o`7VZ?QP2
 R8
 32
@@ -52,25 +52,25 @@ R12
 R13
 R14
 Econtrol_unit
-Z15 w1539112936
+R1
 R2
 R3
 R4
 R5
 R0
-Z16 8../rtl/control_unit.vhd
-Z17 F../rtl/control_unit.vhd
+Z15 8../rtl/control_unit.vhd
+Z16 F../rtl/control_unit.vhd
 l0
 L13
-VCJY>L4HzT<h>2DolN=@3L1
+VUNibJgK@Y?K4LCilmz>8m3
 !s100 ]RDLe0`IzRfb[Z37o0CaU0
 R8
 32
 R9
 !i10b 1
 R10
-Z18 !s90 -reportprogress|300|-work|work|-2002|-explicit|-check_synthesis|../rtl/control_unit.vhd|
-Z19 !s107 ../rtl/control_unit.vhd|
+Z17 !s90 -reportprogress|300|-work|work|-2002|-explicit|-check_synthesis|../rtl/control_unit.vhd|
+Z18 !s107 ../rtl/control_unit.vhd|
 !i113 1
 R13
 R14
@@ -79,86 +79,86 @@ R2
 R3
 R4
 R5
-DEx4 work 12 control_unit 0 22 CJY>L4HzT<h>2DolN=@3L1
+DEx4 work 12 control_unit 0 22 UNibJgK@Y?K4LCilmz>8m3
 l64
 L35
-VD@Ul^ZlG@J_:JfQ1b>^FW2
+V^TOLASH=7g?Zj`^Oj_@a>3
 !s100 5noUda_Fba^DZ3nK=b>1C2
 R8
 32
 R9
 !i10b 1
 R10
+R17
 R18
-R19
 !i113 1
 R13
 R14
 Ememory
-Z20 w1537095306
-Z21 DPx4 ieee 16 std_logic_textio 0 22 V5TSK`;aJKC<l]CEg1>mz1
+R1
+Z19 DPx4 ieee 16 std_logic_textio 0 22 V5TSK`;aJKC<l]CEg1>mz1
 R3
 R2
 R5
 R4
 R0
-Z22 8memory.vhd
-Z23 Fmemory.vhd
+Z20 8memory.vhd
+Z21 Fmemory.vhd
 l0
 L18
-V]YhW>BF5M?16JPO:IjS;F2
+VSUe7POEDTIg<EjYIdM=hJ0
 !s100 DWj_g:Oh1NEB9L?NJ3>S33
 R8
 32
 R9
 !i10b 1
 R10
-Z24 !s90 -reportprogress|300|-work|work|-2002|-explicit|memory.vhd|
-Z25 !s107 memory.vhd|
+Z22 !s90 -reportprogress|300|-work|work|-2002|-explicit|memory.vhd|
+Z23 !s107 memory.vhd|
 !i113 1
-Z26 o-work work -2002 -explicit
+Z24 o-work work -2002 -explicit -O0
 R14
 Abehavioral
-R21
+R19
 R3
 R2
 R5
 R4
-DEx4 work 6 memory 0 22 ]YhW>BF5M?16JPO:IjS;F2
+DEx4 work 6 memory 0 22 SUe7POEDTIg<EjYIdM=hJ0
 l40
 L33
-Vj11BKgXej7U4k_dh7cPUY1
+V^FOdbXdj1Fi74g:HJPT@70
 !s100 YaS_m8K5SeB=1=lOb5eXb1
 R8
 32
 R9
 !i10b 1
 R10
-R24
-R25
+R22
+R23
 !i113 1
-R26
+R24
 R14
 Eprocessor
-Z27 w1540753000
+R1
 R2
 R3
 R4
 R5
 R0
-Z28 8../rtl/processor.vhd
-Z29 F../rtl/processor.vhd
+Z25 8../rtl/processor.vhd
+Z26 F../rtl/processor.vhd
 l0
 L13
-V1bXQa8N0jQl?_8lQI1R;j3
+V4AH48lRbbT?k>3Ck6jKP=0
 !s100 DeFRMge0?[BK<NAlFPVJ93
 R8
 32
 R9
 !i10b 1
 R10
-Z30 !s90 -reportprogress|300|-work|work|-2002|-explicit|-check_synthesis|../rtl/processor.vhd|
-Z31 !s107 ../rtl/processor.vhd|
+Z27 !s90 -reportprogress|300|-work|work|-2002|-explicit|-check_synthesis|../rtl/processor.vhd|
+Z28 !s107 ../rtl/processor.vhd|
 !i113 1
 R13
 R14
@@ -167,84 +167,84 @@ R2
 R3
 R4
 R5
-DEx4 work 9 processor 0 22 1bXQa8N0jQl?_8lQI1R;j3
+DEx4 work 9 processor 0 22 4AH48lRbbT?k>3Ck6jKP=0
 l94
 L29
-VdhA8RS=1bfX]ho:6UbN[f1
+V0SPbo7?TnboOBRCYaljD83
 !s100 YRZcg1N5lhz^TSW`a4djE1
 R8
 32
 R9
 !i10b 1
 R10
-R30
-R31
+R27
+R28
 !i113 1
 R13
 R14
 Eprocessor_tb
-Z32 w1537095324
+R1
 R3
 R2
 R4
 R5
 R0
-Z33 8processor_tb.vhd
-Z34 Fprocessor_tb.vhd
+Z29 8processor_tb.vhd
+Z30 Fprocessor_tb.vhd
 l0
 L14
-Vn`iYfnL@@TOSm@niYeVzi1
+VFS:S<=BS=QLHS?YWLjYI11
 !s100 TP3]zWZd=AR;5i]B7@Jo^2
 R8
 32
 R9
 !i10b 1
 R10
-Z35 !s90 -reportprogress|300|-work|work|-2002|-explicit|processor_tb.vhd|
-Z36 !s107 processor_tb.vhd|
+Z31 !s90 -reportprogress|300|-work|work|-2002|-explicit|processor_tb.vhd|
+Z32 !s107 processor_tb.vhd|
 !i113 1
-R26
+R24
 R14
 Atb
 R3
 R2
 R4
 R5
-DEx4 work 12 processor_tb 0 22 n`iYfnL@@TOSm@niYeVzi1
+DEx4 work 12 processor_tb 0 22 FS:S<=BS=QLHS?YWLjYI11
 l78
 L22
-VMKNYS5JSl1UokbX0DCbG:0
+VAc<kjj[Q`U<S75M??Z6C81
 !s100 4Y]CnD_T;Kj47b[VT>LIO0
 R8
 32
 R9
 !i10b 1
 R10
-R35
-R36
+R31
+R32
 !i113 1
-R26
+R24
 R14
 Ereg_bank
-Z37 w1539262206
+R1
 R2
 R3
 R4
 R5
 R0
-Z38 8../rtl/reg_bank.vhd
-Z39 F../rtl/reg_bank.vhd
+Z33 8../rtl/reg_bank.vhd
+Z34 F../rtl/reg_bank.vhd
 l0
 L19
-VMDR:OcCMh2_K6I9zB[?]g2
+V@7Nd]<<`oM<lhR0]j>gZg2
 !s100 XTR>4O6IW:9HPGAgCWPUz2
 R8
 32
-R9
+Z35 !s110 1540814331
 !i10b 1
-R10
-Z40 !s90 -reportprogress|300|-work|work|-2002|-explicit|-check_synthesis|../rtl/reg_bank.vhd|
-Z41 !s107 ../rtl/reg_bank.vhd|
+Z36 !s108 1540814331.000000
+Z37 !s90 -reportprogress|300|-work|work|-2002|-explicit|-check_synthesis|../rtl/reg_bank.vhd|
+Z38 !s107 ../rtl/reg_bank.vhd|
 !i113 1
 R13
 R14
@@ -253,18 +253,18 @@ R2
 R3
 R4
 R5
-DEx4 work 8 reg_bank 0 22 MDR:OcCMh2_K6I9zB[?]g2
+DEx4 work 8 reg_bank 0 22 @7Nd]<<`oM<lhR0]j>gZg2
 l40
 L33
-V:1_T?aVO]AiOkdMXkZG9Y2
+V=6lBPID5ETMGBbM`kBA5K0
 !s100 FVLfci]AL:hJB86hUWNb]1
 R8
 32
-R9
+R35
 !i10b 1
-R10
-R40
-R41
+R36
+R37
+R38
 !i113 1
 R13
 R14
